@@ -1,3 +1,4 @@
+from __future__ import print_function
 # Algorithm MapHandler
 import time
 from MapHandler.MapHandler import MapHandler
@@ -8,12 +9,11 @@ from Algorithms.dfs import DFS
 from Algorithms.astar import *
 from DataHandler.DataHandler import DataHandler
 
-
-
 class IngestionEngine():
 
     #def __init__(self, noOfMaps, mapSize, iterations, algorithms):
     def __init__(self, mapRange, iterations, algorithmCode):
+        print('')
         # Initiation
         self.sizeStart = mapRange[0]
         self.sizeFinish = mapRange[1]
@@ -30,7 +30,8 @@ class IngestionEngine():
 
 
     def RunTests(self):
-        print( "STARTING TESTS" )
+
+        no_of_tests = (self.sizeFinish - self.sizeStart + 1) * self.iterations
 
         currentMapSize = self.sizeStart
         testNumber = 0
@@ -42,10 +43,8 @@ class IngestionEngine():
                 successfulTest = False
                 while successfulTest == False:
 
-                    print("")
-                    print( "Test Number: " + str(testNumber) )
-                    print( "Map Size:  " + str(currentMapSize) )
-                    print( "Iteration: " + str(iteration) )
+                    message = '\rProgress (tests completed): {}/{} | Current map size: {}'.format(str(testNumber), str(no_of_tests), str(currentMapSize))
+                    print(message, end="") 
 
                     # Place Holders
                     newTime = 0
@@ -156,12 +155,11 @@ class IngestionEngine():
 
 
 start = time.time()
-new = IngestionEngine([10,50], 500, ["1", "1", "0", "1", "1"])
+new = IngestionEngine([10,15], 500, ["1", "1", "0", "1", "1"])
 finish = time.time()
+time_taken = round(finish - start, 2)
 
-print( start )
-print( finish )
-print(finish - start )
+print('\n\nTime taken: {} seconds'.format(time_taken))
 
 
 """
