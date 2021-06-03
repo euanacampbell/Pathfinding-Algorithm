@@ -12,7 +12,7 @@ from DataHandler.DataHandler import DataHandler
 class IngestionEngine():
 
     #def __init__(self, noOfMaps, mapSize, iterations, algorithms):
-    def __init__(self, mapRange, iterations, algorithmCode):
+    def __init__(self, mapRange, iterations, algorithmCode, results_print=False):
         print('')
         # Initiation
         self.sizeStart = mapRange[0]
@@ -26,10 +26,32 @@ class IngestionEngine():
 
         self.dataHandler = DataHandler()
 
-        self.RunTests()
+        # Run everything
+        start = time.time()
+        self.run()
+        finish = time.time()
+        time_taken = round(finish - start, 2)
+        if results_print:
 
+            algorithm_lookup = {
+                0: 'New',
+                1: 'Dijkstra',
+                2: 'BFS',
+                3: 'DFS',
+                4: 'A*'
+            }
+            algorithms=[]
+            for i in range(0, len(algorithmCode)):
+                if int(algorithmCode[i])==1:
+                    algorithms.append(algorithm_lookup[i])
 
-    def RunTests(self):
+            print('\n\n')
+            print('Algorithms: {}'.format(', '.join(algorithms)))
+            print('Maps sizes: {} -> {}'.format(self.sizeStart, self.sizeFinish))
+            print('Iterations: {}'.format(self.iterations))
+            print('Time taken: {} seconds'.format(time_taken))
+    
+    def run(self):
 
         no_of_tests = (self.sizeFinish - self.sizeStart + 1) * self.iterations
 
@@ -43,7 +65,7 @@ class IngestionEngine():
                 successfulTest = False
                 while successfulTest == False:
 
-                    message = '\rProgress (tests completed): {}/{} | Current map size: {}'.format(str(testNumber), str(no_of_tests), str(currentMapSize))
+                    message = '\rTests completed: {}/{} | Current map size: {}/{}'.format(str(testNumber), str(no_of_tests), str(currentMapSize), str(self.sizeFinish))
                     print(message, end="") 
 
                     # Place Holders
@@ -154,80 +176,7 @@ class IngestionEngine():
             currentMapSize += 1
 
 
-start = time.time()
-new = IngestionEngine([10,15], 500, ["1", "1", "0", "1", "1"])
-finish = time.time()
-time_taken = round(finish - start, 2)
 
-print('\n\nTime taken: {} seconds'.format(time_taken))
+if __name__=="__main__":
 
-
-"""
-print("DFS")
-for i in new.resultsDFS:
-    print( i["NodesInFinalRoute"] )
-
-print("BFS")
-for i in new.resultsBFS:
-    print( i["NodesInFinalRoute"] )
-
-print("Dijkstra")
-for i in new.resultsDijkstra:
-    print( i["NodesInFinalRoute"] )
-
-print("A Star")
-for i in new.resultsAStar:
-    print( i["NodesInFinalRoute"] )
-"""
-
-"""
-print( "DIJKSTRA" )
-for i in new.resultsDijkstra:
-    print( i["NodesInFinalRoute"] )
-
-print( "A STAR" )
-for i in new.resultsAStar:
-    print( i["NodesInFinalRoute"] )
-
-
-
-
-print( "DIJKSTRA" )
-otherList = []
-for i in range( 10,31 ):
-    newList = []
-    for j in new.resultsDijkstra:
-        if j["MapSize"] == i:
-            newList.append(j["NodesInFinalRoute"])
-
-    otherList.append( newList )
-
-averages = []
-for i in otherList:
-    average = sum(i) / float(len(i))
-    averages.append( average )
-
-for i in averages:
-    print( i )
-
-
-
-
-print( "A STAR" )
-otherList = []
-for i in range( 10,31 ):
-    newList = []
-    for j in new.resultsAStar:
-        if j["MapSize"] == i:
-            newList.append(j["NodesInFinalRoute"])
-
-    otherList.append( newList )
-
-averages = []
-for i in otherList:
-    average = sum(i) / float(len(i))
-    averages.append( average )
-
-for i in averages:
-    print( i )
-"""
+    new = IngestionEngine([10,12], 500, ["1", "1", "0", "1", "1"], results_print=True)
