@@ -11,7 +11,7 @@ Use with Python 2.7 only.
 Run the ingestion.py file, this will begin the program with the default options
 
 ```bash
-python ingestion.py
+>> python ingestion.py
 
 Tests completed: 1500/1500 | Current map size: 12/12
 
