@@ -4,7 +4,7 @@ Investigating various pathfinding algorithms against a new approach.
 
 ## Installation
 
-Use Python 2.7.
+Use with Python 2.7 only.
 
 ## Usage
 
@@ -12,7 +12,18 @@ Run the ingestion.py file, this will begin the program with the default options
 
 ```bash
 python ingestion.py
+
+Tests completed: 1500/1500 | Current map size: 12/12
+
+
+Algorithms: New, Dijkstra, DFS, A*
+Maps sizes: 10 -> 12
+Iterations: 500
+Time taken: 2.92 seconds
 ```
+
+## Results
+The output data can be found in the `algorithm_results.csv` file, with all the auto-generated maps on in the `maps.csv` file.
 
 ## Abstract
 With software always growing in its capabilities and sophistication, we are seeing programs tackle evermore complex problems, replacing many roles that humans have been performing for decades. One such task is driving, where progression in areas including machine learning and Artificial Intelligence have seen vehicles taking to the roads under the control of only a computer. With pathfinding regarded as a crucial asset in Automatically Guided Vehicles (AVG), it is important that the mechanisms driving the vehicles are considered safe and effective for improved predictability in driving situations. Recent road incidents involving self- driving vehicles have stressed the significance of having safe and reliable computer systems where public trust needs to be gained through high performing pathfinding algorithms and vigorous tests carried out on them.
