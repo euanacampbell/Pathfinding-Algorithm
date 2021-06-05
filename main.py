@@ -1,6 +1,9 @@
 from __future__ import print_function
 # Algorithm MapHandler
 import time
+import sys
+import argparse
+
 from MapHandler.MapHandler import MapHandler
 from Algorithms.newAlgorithmHandler import NBPAHandler
 from Algorithms.dijkstra import dijkstra
@@ -8,6 +11,7 @@ from Algorithms.bfs import BFS
 from Algorithms.dfs import DFS
 from Algorithms.astar import *
 from DataHandler.DataHandler import DataHandler
+
 
 class IngestionEngine():
 
@@ -179,4 +183,14 @@ class IngestionEngine():
 
 if __name__=="__main__":
 
-    new = IngestionEngine([10,12], 500, ["1", "1", "0", "1", "1"], results_print=True)
+    try:
+        grid_size_start = int(sys.argv[1])
+        grid_size_finish = int(sys.argv[2])
+        iterations = int(sys.argv[3])
+    except IndexError:
+        print('Parameters not passed, or not passed correctly. Defaults set.')
+        grid_size_start = 10
+        grid_size_finish = 12
+        iterations = 500
+
+    new = IngestionEngine([grid_size_start,grid_size_finish], iterations, ["1", "1", "0", "1", "1"], results_print=True)

@@ -8,10 +8,16 @@ Use with Python 2.7 only.
 
 ## Usage
 
-Run the ingestion.py file, this will begin the program with the default options
+Run the `main.py` file. Optional paramters can be added as shown below.
+
+- 10 = grid start size
+- 12 = grid finish size
+- 400 = iterations of each grid size
+
+
 
 ```bash
->> python ingestion.py
+>> python main.py 10 12 400
 
 Tests completed: 1500/1500 | Current map size: 12/12
 
