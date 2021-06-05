@@ -19,13 +19,13 @@ Run the `main.py` file. Optional paramters can be added as shown below.
 ```bash
 >> python main.py 10 12 400
 
-Tests completed: 1500/1500 | Current map size: 12/12
+Tests completed: 1200/1200 | Current map size: 12/12
 
 
 Algorithms: New, Dijkstra, DFS, A*
 Maps sizes: 10 -> 12
-Iterations: 500
-Time taken: 2.92 seconds
+Iterations: 400
+Time taken: 2.42 seconds
 ```
 
 ## Results
